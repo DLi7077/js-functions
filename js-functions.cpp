@@ -155,15 +155,6 @@ int main() {
 
   std::cout << "total age: " << totalAge << "\n";
   std::cout << "average age: " << averageAge << "\n";
-  // std::vector<int> filtered = JS::filter<int>(, [](int val) -> bool {
-  //   return val != 4;
-  // });
-  // int reduced = JS::reduce<int, int>(result, [](int& accumulator, int curr) -> int {
-  //   return accumulator += curr;
-  // });
-
-  // std::string reduced2 = JS::reduce<int, std::string>(result, [](std::string& accumulator, int curr) -> std::string {
-  //   accumulator += to_std::string(curr);
 
   //   return accumulator;
   // });
