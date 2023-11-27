@@ -47,7 +47,7 @@ std::vector<Item> filter(const std::vector<Item>& values, std::function<bool(con
   for (const Item& value : values) {
     if (condition(value) == true) result.push_back(value);
   }
-
+  
   return result;
 }
 
@@ -58,7 +58,7 @@ std::vector<Item> filter(const std::vector<Item>& values, std::function<bool(con
   for (int idx = 0; idx < values.size(); idx++) {
     if (condition(values[idx], idx) == true) result.push_back(values[idx]);
   }
-
+  
   return result;
 }
 
@@ -76,9 +76,9 @@ Product reduce(const std::vector<Item>& values, std::function<Product(Product&, 
   for (const Item& value : values) {
     result = reducer(result, value);
   }
+  
   return result;
 }
-
 }  // namespace JS
 
 template <typename Item>
@@ -127,15 +127,15 @@ int main() {
       people, [](const Person& dude) -> bool {
         return dude.age >= 21;
       });
-
   print(canDrinkAlcohol);
+  
   // suppose the bar bouncer only allows every other person
   std::vector<Person> everyEvenPerson = JS::filter<Person>(
       canDrinkAlcohol, [](const Person& dude, int idx) -> bool {
         return idx % 2 == 0;
       });
-
   print(everyEvenPerson);
+  
   // get the full names, prefixed by position in queue (ex: "1. Butter Riolu")
   std::vector<std::string> names = JS::map<Person, std::string>(
       everyEvenPerson, [](const Person& dude, int idx) -> std::string {
@@ -144,7 +144,6 @@ int main() {
       });
 
   print(names);
-
   // compute average age of everyone who attempted to join
   double totalAge = JS::reduce<Person, double>(
       people, [](double totalAge, const Person& dude) -> double {
@@ -152,10 +151,6 @@ int main() {
       });
 
   double averageAge = totalAge / people.size();
-
   std::cout << "total age: " << totalAge << "\n";
   std::cout << "average age: " << averageAge << "\n";
-
-  //   return accumulator;
-  // });
 }
