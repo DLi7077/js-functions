@@ -129,7 +129,7 @@ int main() {
       });
 
   print(canDrinkAlcohol);
-  // suppose the bar jumper only allows every other person
+  // suppose the bar bouncer only allows every other person
   std::vector<Person> everyEvenPerson = JS::filter<Person>(
       canDrinkAlcohol, [](const Person& dude, int idx) -> bool {
         return idx % 2 == 0;
